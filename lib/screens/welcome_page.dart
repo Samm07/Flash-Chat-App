@@ -2,6 +2,8 @@ import 'package:flash_chat_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flash_chat_app/components/RoundedButton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -9,6 +11,18 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Firebase.initializeApp().whenComplete(() { 
+      print("completed");
+      setState(() {});
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +75,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                     RoundedButton(
                       label: 'Login',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/login_page');
+                      },
                     ),
                   ],
                 ),

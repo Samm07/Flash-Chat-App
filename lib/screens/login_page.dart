@@ -1,38 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flash_chat_app/components/RoundedButton.dart';
 import 'package:flash_chat_app/components/InputTextField.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-class RegisterPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-
-  final _auth = FirebaseAuth.instance;
+class _LoginPageState extends State<LoginPage> {
+ 
+ final _auth = FirebaseAuth.instance;
 
   String email='';
   String password='';
 
-    @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Firebase.initializeApp().whenComplete(() { 
-      print("completed");
-      setState(() {});
-    });
-  }
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/welcome_bg.jpg'),
@@ -69,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: InputTextField(
                 label: 'Email',
                 hintText: '',
-                onChanged: (value) {
+                onChanged: (value){
                   email=value;
                 },
                 obscureStatus: false,
@@ -86,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: InputTextField(
                 label: 'Password',
                 hintText: '',
-                onChanged: (value) {
+                onChanged: (value){
                   password=value;
                 },
                 obscureStatus: true,
@@ -94,20 +82,23 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox(height: 10),
             RoundedButton(
-              label: 'Register',
+              label: 'Login',
               onPressed: () async{
-                // print(email);
-                // print(password);
                 try{
-                  final newUser = await  _auth.createUserWithEmailAndPassword(email: email, password: password);
-                  if(newUser!=null)
+                  final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+
+                  if(user!=null)
                     Navigator.pushNamed(context, '/chat_screen_page');
+                    
                 }
-                catch(e)
-                {
+                catch(e){
                   print(e);
+                  AlertDialog(
+                    title: Text('e'),
+                  );
                 }
-              }
+
+              },
             ),
             Expanded(
               flex: 50,
@@ -117,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
             )
           ],
         ),
-      ),
+      ),      
     );
   }
 }

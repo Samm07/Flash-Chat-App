@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341891755554",
+    "project_id": "flash-chat-application-d25fc",
+    "storage_bucket": "flash-chat-application-d25fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341891755554:android:5f5bd406bc8f1b7d0a647b",
+        "android_client_info": {
+          "package_name": "com.samearth.flash_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341891755554-95kaabeqkj8lmq51vgba1420vo7abs3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiAy4oZ77oUyxYh9A8Fc0B9p2KhoWMX90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341891755554-95kaabeqkj8lmq51vgba1420vo7abs3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
